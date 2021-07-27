@@ -1,0 +1,58 @@
+<h1>{{title}} </h1>
+<div style="color: red;" *ngIf="showTopMessage" class="alert alert-danger"> Please fill the values correctly </div>
+
+
+<form [formGroup]="profileForm"  class="et">
+    <mat-form-field>
+        <input matInput class="textbox" formControlName="tournamentName" placeholder="Tournament Name *">
+    </mat-form-field><br><br>
+
+    <mat-form-field>
+        <input matInput class="textbox" formControlName="place" placeholder="Place *">
+        
+    </mat-form-field><br><br>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="startDatePicker" class="textbox" formControlName="startdate" placeholder="Start date *">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field><br><br>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="endDatePicker" class="textbox" formControlName="enddate" placeholder="End Date *">
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field><br><br>
+
+    <mat-form-field>
+        <input matInput class="textbox" formControlName="round" placeholder="Round *">
+    </mat-form-field><br><br>
+
+    <mat-form-field>
+        <input matInput class="textbox" formControlName="category" placeholder="Category *">
+    </mat-form-field><br><br>
+
+    <mat-form-field>
+        <input matInput class ="textbox" placeholder="Enter your url" formControlName ="website"/>
+        <div *ngIf="f.website?.errors?.required"></div>
+                <div *ngIf="f.website?.errors?.pattern">Please enter valid url.</div>
+    </mat-form-field>
+
+
+   <!--- <mat-form-field>
+        <input matInput class="textbox" formControlName="website" placeholder="Website *">
+    </mat-form-field><br><br>-->
+
+</form>
+
+
+
+<div class="error">
+
+    <!--<button type="button">Submit</button>-->
+    <button mat-raised-button  class="btn"  (click)="validateForm()">Submit</button><br><br>
+    <p>Form Status: {{ profileForm.status | json }}</p>
+    <p>Form Status: {{ profileForm.value | json }}</p>
+    <p>Complete the form to enable button.</p>
+
+</div>
